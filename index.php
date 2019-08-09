@@ -42,7 +42,7 @@
         </article>
 
         <div id="ver-todas">
-        <a href="entradas.php">Ver todas las entradas</a>
+        <a href="entradas.php" class="btn btn-primary mx-auto w-50">Ver todas las entradas</a>
         </div>
 
     </div>

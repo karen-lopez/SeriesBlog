@@ -13,8 +13,28 @@ function mostrarError($errores, $campo){
 }
 
 function borrarErrores(){
-    $_SESSION['errores'] = null;
-    $borrado = session_unset();
+    if(isset($_SESSION['errores'])){
+        $_SESSION['errores'] = null;
+        unset($_SESSION['errores']);
+    }
+    
+    if(isset($_SESSION['completado'])){
+        $_SESSION['completado'] = null;
+        unset($_SESSION['completado']);
+    }
+  
+}
 
-    return $borrado;
+function ObtenerCategorias($db){
+    $sql = "SELECT * FROM categorias ORDER BY nombre ASC;";
+    $categorias = mysqli_query($db, $sql);
+    $result= array();
+    
+    if($categorias && mysqli_num_rows($categorias) >=1){
+        //crea tabla hash
+        while($categoria = mysqli_fetch_assoc($categorias)){
+            array_push($result, $categoria);
+        }
+    }
+    return $result;
 }

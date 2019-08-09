@@ -1,16 +1,18 @@
 <?php
-session_start();
+
+
 if(isset($_POST)){
     //conexion a la base de datos
     require_once 'includes/conexion.php';
     //iniciar sesión
-    session_start();
-    
+    if(!isset($_SESSION)){
+        session_start();
+    }
     // recoger los valores del formulario registro
-    $nombre = $_POST['nombre'] ?? false;
-    $apellidos = $_POST['apellidos'] ?? false;
-    $email = $_POST['email'] ?? false;
-    $password = $_POST['password'] ?? false;
+    $nombre = mysqli_real_escape_string($db, $_POST['nombre']) ?? false;
+    $apellidos = mysqli_real_escape_string($db, $_POST['apellidos']) ?? false;
+    $email = mysqli_real_escape_string($db, $_POST['email']) ?? false;
+    $password = mysqli_real_escape_string($db, $_POST['password']) ?? false;
 
     //Array de errores
     $errores = array();
@@ -42,7 +44,7 @@ if(isset($_POST)){
     }
 
     //validar password
-    if(!empty($password) && !preg_match("/\s/", $password) && count_chars($password)>5){
+    if(!empty($password) && !preg_match("/\s/", $password)){
         $password_validado = true;
         var_dump($password);
     }else{
@@ -60,9 +62,13 @@ if(isset($_POST)){
         $password_segura = password_hash($password, PASSWORD_BCRYPT, ['cost'=>4]);
 
         //insertamos los datos en la tabla
-        $sql = "INSERT INTO usuarios VALUES(null, $nombre, $apellidos, $email, $password_segura, CURDATE());";
+        $sql = "INSERT INTO usuarios VALUES(null, '$nombre', '$apellidos', '$email', '$password_segura', CURDATE());";
         $guardar_query = mysqli_query($db, $sql);
-
+        
+        //ver el error que hubo en la base de datos
+        //var_dump(mysqli_error($db));
+        //die();
+        
         if($guardar_query){
             $_SESSION['completado'] = 'Se ha registrado con éxito';
         }else{
@@ -71,6 +77,7 @@ if(isset($_POST)){
 
     }else {
         $_SESSION['errores'] = $errores;
+        
     }
 }
 
