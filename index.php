@@ -3,46 +3,20 @@
 <?php require_once './includes/lateral.php'; ?>
             
     <!-- Caja prinsipal -->
-    <div id="principal">
+    <div id="principal" class="container">
         <h1>Ultimas entradas</h1>
+        
+        <?php $entradas = obtenerUltimasEntradas($db);
+    foreach ($entradas as $entrada):?>
         <article class="entrada">
-            <h2>Titulo de mi entrada</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipiscing elit,
-                dignissim nec dictum luctus imperdiet mi potenti eget, 
-                aenean netus laoreet vel senectus montes. Tempor feugiat
-                cursus cras neque donec vehicula sodales egestas maecenas, 
-                nulla id sapien parturient metus torquent porttitor sed semper, 
-                suspendisse rhoncus conubia fermentum porta quis molestie a. 
-            </p>
+        <h2><?=$entrada['titulo']?></h2>
+        <span class="fecha"><?=$entrada['categoria']." | ".$entrada['fecha']?></span>
+        <p><?=substr($entrada['descripcion'],0,175)."..."?></p>
         </article>
-
-        <article class="entrada">
-            <h2>Titulo de mi entrada</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipiscing elit,
-                dignissim nec dictum luctus imperdiet mi potenti eget, 
-                aenean netus laoreet vel senectus montes. Tempor feugiat
-                cursus cras neque donec vehicula sodales egestas maecenas, 
-                nulla id sapien parturient metus torquent porttitor sed semper, 
-                suspendisse rhoncus conubia fermentum porta quis molestie a. 
-            </p>
-        </article>
-
-        <article class="entrada">
-            <h2>Titulo de mi entrada</h2>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipiscing elit,
-                dignissim nec dictum luctus imperdiet mi potenti eget, 
-                aenean netus laoreet vel senectus montes. Tempor feugiat
-                cursus cras neque donec vehicula sodales egestas maecenas, 
-                nulla id sapien parturient metus torquent porttitor sed semper, 
-                suspendisse rhoncus conubia fermentum porta quis molestie a. 
-            </p>
-        </article>
-
+    <?php endforeach;?>
+        
         <div id="ver-todas">
-        <a href="entradas.php" class="btn btn-primary mx-auto w-50">Ver todas las entradas</a>
+        <a href="entradas.php" class="btn btn-info w-50">Ver todas las entradas</a>
         </div>
 
     </div>

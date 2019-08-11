@@ -1,18 +1,18 @@
 <!-- Barra lateral -->
-            <aside id="sidebar">
+            <aside id="sidebar" class="container">
                 <?php if(isset($_SESSION['usuario'])): ?>
-                <div id='usuario-logueado' class="bloque text-center">
+                <div id='usuario-logueado' class="bloque text-center ">
                     <h2>Bienvenido, <?=$_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'];?></h2>
                     <!-- Botones -->
                     <a href="" class="btn btn-info mx-2 my-1 w-75">Mi perfil</a>
                     <a href="" class="btn btn-info mx-2 my-1 w-75">Crear Entrada</a>
-                    <a href="" class="btn btn-info mx-2 my-1 w-75">Crear Categoria</a>
+                    <a href="crear-categoria.php" class="btn btn-info mx-2 my-1 w-75">Crear Categoria</a>
                     <a href="cerrar.php" class="btn btn-info mx-2 my-1 w-75">Cerrar sesión</a>
                 
                 </div>
                 <?php else: ?>
-                <div id="login" class="bloque">
-                    <h3> Identifícate</h3>
+                <div id="login" class="bloque container col-12">
+                    <h4> Identifícate</h4>
                     <?php if(isset($_SESSION['error_login'])):
                         echo "<div class='alerta alerta-error'>".$_SESSION['error_login']."</div>";
                         endif; 
@@ -29,8 +29,8 @@
                     </form>
                 </div>
 
-                <div id="register" class="bloque">
-                    <h3> Registrate</h3>
+                <div id="register" class="bloque container">
+                    <h4> Registrate</h4>
                     <?php    
                         if(isset($_SESSION['completado'])):
                             echo "<div class='alerta'>".$_SESSION['completado']."</div>";
