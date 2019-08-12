@@ -37,4 +37,3 @@
             header('Location: crear-categoria.php');
         }
     } 
-//header('Location: index.php');
