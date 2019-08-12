@@ -46,7 +46,7 @@ if(isset($_POST)){
     //validar password
     if(!empty($password) && !preg_match("/\s/", $password)){
         $password_validado = true;
-        var_dump($password);
+        
     }else{
         $password_validado = false;
         $errores['password'] = "La contraseña no es valido";

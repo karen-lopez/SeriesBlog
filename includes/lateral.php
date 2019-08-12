@@ -5,7 +5,7 @@
                     <h2>Bienvenido, <?=$_SESSION['usuario']['nombre'].' '.$_SESSION['usuario']['apellidos'];?></h2>
                     <!-- Botones -->
                     <a href="" class="btn btn-info mx-2 my-1 w-75">Mi perfil</a>
-                    <a href="" class="btn btn-info mx-2 my-1 w-75">Crear Entrada</a>
+                    <a href="crear-entradas.php" class="btn btn-info mx-2 my-1 w-75">Crear Entrada</a>
                     <a href="crear-categoria.php" class="btn btn-info mx-2 my-1 w-75">Crear Categoria</a>
                     <a href="cerrar.php" class="btn btn-info mx-2 my-1 w-75">Cerrar sesión</a>
                 
