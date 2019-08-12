@@ -11,12 +11,12 @@
         <div class="form-group">
             <label for="titulo">Titulo de la entrada</label>
             <input type="text" name="titulo" class="form-control w-100" required/>
-            <?php echo mostrarError($_SESSION['errores'] ?? false, 'titulo')  ; ?>
+            <?php echo mostrarError($_SESSION['errores_entrada'] ?? false, 'titulo')  ; ?>
         </div>
         <div class="form-group">
-        <label for="descripcion">Descripción de la entrada</label>
-        <textarea name="descripcion"  class="form-control w-100" required /> </textarea>
-        <?php echo mostrarError($_SESSION['descripcion'] ?? false, 'descripcion')  ; ?>
+            <label for="descripcion">Descripción de la entrada</label>
+            <textarea name="descripcion"  class="form-control w-100" required /></textarea>
+            <?php echo mostrarError($_SESSION['errores_entrada'] ?? false, 'descripcion')  ; ?>
         </div>
          <div class="form-group">
             <label for="categoria">Elija una Categoria</label>
@@ -26,7 +26,7 @@
                         <option value="<?=$categoria['id']?>"><?=$categoria['nombre']?></option>
                 <?php endforeach;?>
           </select>
-          <?php echo mostrarError($_SESSION['categoria'] ?? false, 'categoria')  ; ?>
+          <?php echo mostrarError($_SESSION['errores_entrada'] ?? false, 'categoria')  ; ?>
         </div>
         <input type="submit" name="crear" class="btn btn-info w-25" />
     </form>

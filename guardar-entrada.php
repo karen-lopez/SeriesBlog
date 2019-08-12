@@ -17,27 +17,18 @@
         // Validar los datos antes de ingresarlos a la base de datos
         
         //validar titulo de entrada
-        if(!empty($titulo) && !is_numeric($titulo) ){
-            $titulo_correcto = true;
-        }else{
+        if(empty($titulo) || is_numeric($titulo) ){
             $errores['titulo'] = "El titulo no es valido";
-            
         }
         
         //validar la descripcion de la entrada
-        if(!empty($descripcion) && !is_numeric($descripcion) ){
-            $descripcion_correcta = true;
-        }else{
-            $errores['descripcion'] = "Descripsion invalida";
-            
+        if(empty($descripcion) || is_numeric($descripcion) || (preg_match('/^[\w .,!?()]+$/', $message)) == false ){
+            $errores['descripcion'] = "Descripcion invalida";
         }
         
         //validar categoria de la entrada
-        if(!empty($categoria) && !is_numeric($descripcion) ){
-            $categoria_correcta = true;
-        }else{
-            $errores['descripcion'] = "Categoria invalida";
-            
+        if(empty($categoria) ){
+            $errores['categoria'] = "Categoria invalida";
         }
         
         echo var_dump($errores);
@@ -47,7 +38,7 @@
             mysqli_query($db, $query);
             header('Location: index.php');
         }else{
-            $_SESSION['errores'] = $errores;
-            //header('Location: crear-entradas.php');
+            $_SESSION['errores_entrada'] = $errores;
+            header('Location: crear-entradas.php');
         }
     } 
