@@ -173,9 +173,6 @@ input[type="password"]{
     overflow: hidden;
 }
 
-#principal a{
-    color: #333;
-}
 
 #principal h1{
     font-size: 32px;
