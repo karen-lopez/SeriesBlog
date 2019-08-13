@@ -1,5 +1,4 @@
-<?php require_once './includes/cabecera.php'; ?>
-        
+<?php require_once './includes/cabecera.php'; ?>        
 <?php require_once './includes/lateral.php'; ?>
             
     <!-- Caja prinsipal -->
@@ -11,6 +10,7 @@
         <article class="entrada">
         <h2><?=$entrada['titulo']?></h2>
         <span class="fecha"><?=$entrada['categoria']." | ".$entrada['fecha']?></span>
+        <!-- acota la descripcion a 175 palabras a mostrar -->
         <p><?=substr($entrada['descripcion'],0,175)."..."?></p>
         </article>
     <?php endforeach;?>
