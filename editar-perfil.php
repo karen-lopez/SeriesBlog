@@ -8,17 +8,21 @@
         <h1>Perfil de Usuario</h1>
         <div class="container">
             <form action="actualizar-perfil.php" method="POST" class="form">
-                <label>Nombre: 
-                    <input type="text" placeholder="<?=$usuario['nombre']?>"/>
+                <label for="nombre">Nombre: 
+                    <input type="text" name="nombre" value="<?=$usuario['nombre']?>" required/>
                 </label>
-                <label>Apellidos: 
-                    <input type="text" placeholder="<?=$usuario['apellidos']?>"/>
+                <?php echo mostrarError($_SESSION['errores'] ?? false, 'nombre')  ; ?>
+                <label for="apellidos">Apellidos: 
+                    <input type="text" name="apellidos" value="<?=$usuario['apellidos']?>" required/>
                 </label>
-                <label>Email: 
-                    <input type="email" placeholder="<?=$usuario['email']?>"/>
+                <?php echo mostrarError($_SESSION['errores'] ?? false, 'apellidos')  ; ?>
+                <label for="email">Email: 
+                    <input type="email" name="email" value="<?=$usuario['email']?>" required/>
                 </label>
+                <?php echo mostrarError($_SESSION['errores'] ?? false, 'email')  ; ?>
                 <input type="submit" name="submit" value="Actualizar" class="btn btn-info"/>
             </form>
+            <?php borrarErrores() ?>
             
         </div>
     </div>

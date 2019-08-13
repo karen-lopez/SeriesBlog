@@ -37,7 +37,12 @@ if(isset($_POST)){
 
     //validar email
     if(!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $email_validado = true;
+        $query = "SELECT email FROM usuarios WHERE email= '$email'";
+        $result = mysqli_query($db, $query);
+        //si ya existe ese correo en la db
+        if(mysqli_num_rows($result) > 0){
+            $errores['email'] = "El email ya esta registrado";
+        }
     }else{
         $email_validado = false;
         $errores['email'] = "El email no es valido";
@@ -46,7 +51,6 @@ if(isset($_POST)){
     //validar password
     if(!empty($password) && !preg_match("/\s/", $password)){
         $password_validado = true;
-        
     }else{
         $password_validado = false;
         $errores['password'] = "La contraseña no es valido";
