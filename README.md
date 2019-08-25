@@ -1,2 +1,4 @@
 # SeriesBlog
- Reviews blog series
+ Web page about Reviews blog series
+ only php, css, bootstrap4 and SQL
+ 
